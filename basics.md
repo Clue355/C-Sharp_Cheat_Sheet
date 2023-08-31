@@ -187,3 +187,76 @@ get an error
 var message;
 (1,5): error CS0818: Implicitly-typed variables must be initialized
 ```
+
+An escape character sequence is an instruction to the runtime to insert a special character that will affect the output of your string. In C#, the escape character sequence begins with a backslash \ followed by the character you're escaping. For example, the \n sequence will add a new line, and a \t sequence will add a tab.
+
+```C#
+Console.WriteLine("Hello\nWorld!");
+Console.WriteLine("Hello\tWorld!");
+```
+
+Ex output: `Hello
+World!`
+`Hello   World!`
+
+use the escape sequence to include double-quotes in your string literal
+
+```C#
+Console.WriteLine("Hello \"World\"!");
+```
+
+To display a double backslash use two backslashes
+
+```C#
+Console.WriteLine("c:\\source\\repos");
+```
+
+Use the @ symbol before the string to keep all whitespaces and characters. This also replaces the need for extra blackslashes
+
+```C#
+Console.WriteLine(@"    c:\source\repos    
+        (this is where your code goes)");
+```
+
+Ex output: `c:\source\repos  `  
+`        (this is where your code goes)`
+
+Use the (`\u`) to use encoded characters in strings
+
+```C#
+Console.WriteLine("\u3053\u3093\u306B\u3061\u306F World!");
+```
+
+Ex output: `Kon'nichiwa World`  
+
+To concatonate a string you can use the plus sign like in the example below. There is no limit to how much you can concatonate and you can add in blank spaces like " "
+
+```C#
+string firstName = "Bob";
+string greeting = "Hello";
+string message = greeting + " " + firstName + "!";
+Console.WriteLine(message);
+```
+
+Avoid intermediate variables by just using as few variables as possible
+
+```C#
+string firstName = "Bob";
+string greeting = "Hello";
+Console.WriteLine(greeting + " " + firstName + "!");
+```
+
+String interpolation combines multiple values into a single literal string by using a "template" and one or more interpolation expressions. An interpolation expression is a variable surrounded by an opening and closing curly brace symbol { }. The literal string becomes a template when it's prefixed by the $ character.
+
+```C#
+string message = $"{greeting} {firstName}!";
+```
+
+varbatim literals and string interpolation can be combines as shown
+
+```C#
+string projectName = "First-Project";
+Console.WriteLine($@"C:\Output\{projectName}\Data");
+```
+
+Ex output: `C:\Output\First-Project\Data`
